@@ -1,0 +1,47 @@
+home:
+    pattern:  /
+    defaults: { _controller: AwojtysTicketServBundle:Index:index }
+
+add_ticket:
+    path: /add_ticket
+    defaults: { _controller: AwojtysTicketServBundle:Ticket:add }
+    
+show_ticket:
+    path: /show_ticket/{id}
+    defaults: { _controller: AwojtysTicketServBundle:Ticket:show }
+    
+edit_ticket:
+    path: /edit_ticket/{id}
+    defaults: { _controller: AwojtysTicketServBundle:Ticket:edit }
+
+delete_ticket:
+    path: /delete_ticket/{id}
+    defaults: { _controller: AwojtysTicketServBundle:Ticket:delete }
+    
+register:
+    path: /register
+    defaults: { _controller: AwojtysTicketServBundle:User:register }
+
+logout:
+    path: /logout
+
+user_list:
+    path: /user_list
+    defaults: { _controller: AwojtysTicketServBundle:User:list }
+
+user_edit:
+    path: /user_edit/{id}
+    defaults: { _controller: AwojtysTicketServBundle:User:edit }
+
+user_delete:
+    path: /user_delete/{id}
+    defaults: { _controller: AwojtysTicketServBundle:User:delete }
+    
+user_profil:
+    path: /user_profil/{id}
+    defaults: { _controller: AwojtysTicketServBundle:User:show }
+
+config:
+    path: /config
+    defaults: { _controller: AwojtysTicketServBundle:Index:config }
+

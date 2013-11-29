@@ -1,0 +1,10 @@
+awojtys_ticket_serv:
+    resource: "@AwojtysTicketServBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+login:
+     pattern:   /login
+     defaults: { _controller: AwojtysTicketServBundle:User:login }
+login_check:
+     pattern:   /login_check
+     

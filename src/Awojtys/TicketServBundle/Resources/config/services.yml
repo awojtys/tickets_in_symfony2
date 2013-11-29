@@ -1,0 +1,23 @@
+services:
+  users_helper:
+    class: Awojtys\TicketServBundle\DependencyInjection\UserHelper
+    arguments: [@doctrine.orm.entity_manager]
+    
+  ticket_helper:
+    class: Awojtys\TicketServBundle\DependencyInjection\TicketHelper
+    arguments: [@doctrine.orm.entity_manager, @send_mail]
+    
+  config_helper:
+    class: Awojtys\TicketServBundle\DependencyInjection\ConfigHelper
+    arguments: [@doctrine.orm.entity_manager]
+    
+  image_operations:
+    class: Awojtys\TicketServBundle\DependencyInjection\ImageOperations
+    arguments: [@doctrine.orm.entity_manager, @config_helper]
+    
+  send_mail:
+    class: Awojtys\TicketServBundle\DependencyInjection\Mailer
+    arguments: [@doctrine.orm.entity_manager, @config_helper, @mailer]
+    
+  ajax_helper:
+    class: Awojtys\TicketServBundle\DependencyInjection\AjaxHelper

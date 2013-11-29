@@ -1,0 +1,45 @@
+{% extends 'AwojtysTicketServBundle::base.html.twig' %}
+
+{% block title %}Lista ticketów{% endblock %}
+
+{% block site_title %}Lista ticketów {% endblock %}
+
+{% block content %}
+<div ng-app="Sort">
+<table class="ticket_table" ng-controller="SortController" data-ng-init="init()" >
+    <thead>
+    <tr>
+        <form name="filter" action="">
+        <th ng-click="name = 'ID' ; reverse=!reverse">ID</th>
+        <th ng-click="name = 'Author' ; reverse=!reverse">Autor</th>
+        <th ng-click="name = 'Title' ; reverse=!reverse">Tytuł</th>
+        <th ng-click="name = 'Status' ; reverse=!reverse">Status</th>
+        <th ng-click="name = 'Priority' ; reverse=!reverse">Priorytet</th>
+        <th ng-click="name = 'Assignee' ; reverse=!reverse">Przydzielony</th>
+        <th ng-click="name = 'Date' ; reverse=!reverse">Date</th>
+        </form>
+    </tr>
+    <tr>
+        <th><input type="text" ng-model="filters.ID" />
+        <th><input type="text" ng-model="filters.Author" /></th>
+        <th><input type="text" ng-model="filters.Title" /></th>
+        <th><input type="text" ng-model="filters.Status" /></th>
+        <th><input type="text" ng-model="filters.Priority" /></th>
+        <th><input type="text" ng-model="filters.Assignee" /></th>
+        <th><input type="text" ng-model="filters.Date" /></th>
+    </tr>
+    </thead>
+    <tbody >
+        <tr ng-repeat="ticket in tickets | orderBy:name:reverse | filter:filters ">
+            <td>[[ticket.ID]]</td>
+            <td>[[ticket.Author]]</td>
+            <td>[[ticket.Title]]</td>
+            <td>[[ticket.Status]]</td>
+            <td>[[ticket.Priority]]</td>
+            <td>[[ticket.Assignee]]</td>
+            <td>[[ticket.Date]]</td>
+        </tr>
+    </tbody>
+</table>
+        </div>
+ {% endblock %}

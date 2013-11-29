@@ -1,0 +1,38 @@
+{% extends 'AwojtysTicketServBundle::base.html.twig' %}
+{% block title %}Edycja Ticketu{% endblock %}
+{% block site_title %}Edycja ticketu numer {{ id }}{% endblock %}
+
+{% block content %}
+{{ form_start(form) }}
+<table>
+    <tr>
+        <td>{{ form_label(form.Title) }}</td>
+        <td>{{ form_widget(form.Title) }}</td>
+        <td>{{ form_errors(form.Title) }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ form_label(form.Content) }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ form_widget(form.Content) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.Status) }}</td>
+        <td>{{ form_widget(form.Status) }}</td>
+    </tr>
+   <tr>
+        <td>{{ form_label(form.Priority) }}</td>
+        <td>{{ form_widget(form.Priority) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.Assignee) }}</td>
+        <td>{{ form_widget(form.Assignee) }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>{{ form_widget(form.Submit) }}</td>
+    </tr>
+</table>
+{{ form_end(form) }}
+{% endblock %}

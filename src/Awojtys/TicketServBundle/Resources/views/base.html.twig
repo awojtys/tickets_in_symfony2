@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="/bundles/awojtysticketserv/js/test.js"></script>
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="/bundles/awojtysticketserv/css/style.css" />
+        {% endblock %}
+    </head>
+    <body>
+
+        <div class="title">
+            TicketServ
+        </div>
+        <div class="contener">
+
+            <div class="top_menu">
+                <ul>
+                    {% set user_role = false %}
+                        {% if is_granted('ROLE_USER') %}{% set user_role = 'user' %}{% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}{% set user_role = 'admin' %}{% endif %}
+                        
+                    <li><a href="{{ path('home') }}">Lista ticketów</a></li>
+                    
+                    {% if user_role == false %}
+                    <li><a href="{{ path('login') }}">Zaloguj się</a></li>
+                    {% endif %}
+                    
+                    {% if user_role != false %}
+                    <li><a href="{{ path('add_ticket') }}">Utwórz nowy ticket</a></li>
+                    <li><a href="{{ path('user_profil', {'id': app.user.id}) }}">Mój profil</a></li>
+                    
+                    {% endif %}
+                        
+                    {% if user_role == 'admin' %}
+                    <li><a href="{{ path('register') }}">Stwórz użytkownika</a></li>
+                    <li><a href="{{ path('user_list') }}">Lista użytkowników</a></li>
+                    <li><a href="{{ path('config') }}">Ustawienia</a></li>    
+                    {% endif %}
+                    
+                    {% if user_role != false %}
+                    <li><a href="{{ path('logout') }}">Wyloguj</a></li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+
+            <div class="text_box">
+                <div class="title">
+                    {% block site_title %}{% endblock %}
+                </div>
+                    
+                <br />
+                {% if app.session.started %}
+                        {% for flashMessage in app.session.flashbag.get('notice') %}
+                        {{ flashMessage }}
+                        {% endfor %}
+                {% endif %}
+                <br />
+                {% block info %}{% endblock %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

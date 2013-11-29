@@ -1,0 +1,18 @@
+Awojtys\TicketServBundle\Entity\Priority:
+    type: entity
+    table: null
+    repositoryClass: Awojtys\TicketServBundle\Entity\PriorityRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '255'
+    lifecycleCallbacks: {  }
+    oneToMany:
+         tickets:
+             targetEntity: Ticket
+             mappedBy: priority

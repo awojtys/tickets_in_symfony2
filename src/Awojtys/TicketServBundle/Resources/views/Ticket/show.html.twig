@@ -1,0 +1,27 @@
+{% extends 'AwojtysTicketServBundle::base.html.twig' %}
+{% block title %}Podgląd ticketu{% endblock %}
+{% block site_title %}Podgląd ticketu numer {{ id }}{% endblock %}
+
+{% block content %}
+<table class="ticket_table">
+    <tr>
+        <td>ID: {{ data.id }}</td>
+        <td>Autor: {{ data.author }}</td>
+        <td>{% if (app.user.nickname is defined) and (app.user.nickname == data.author or app.user.role == 'admin')  %}<a href=" {{ path('edit_ticket', {'id':id}) }}">Edytuj</a>{% endif %}</td>
+    </tr>
+    <tr>
+        <td>Tytuł: {{ data.title }}</td>
+        <td>Data: {{ data.date|date('Y-m-d') }}</td>
+        <td>{% if (app.user.nickname is defined) and (app.user.nickname == data.author or app.user.role == 'admin')  %} <a href=" {{ path('delete_ticket', {'id':data.id}) }}"  onClick="return confirm('Jesteś pewien że chcesz skasować ten ticket?')" >Usuń</a> {% endif %}</td>
+    </tr>
+    <tr>
+        <td>Status: {{ data.status }}</td>
+        <td>Priorytet: {{ data.priority }}</td>
+        <td>Przydzielony: {{ data.assignee }}</td>
+    </tr>
+        <tr>
+        <td colspan="3">{{ data.content }}</td>
+    </tr>
+</table>
+{% endblock %}
+

@@ -1,0 +1,57 @@
+{% extends "AwojtysTicketServBundle::base.html.twig" %}
+{% block title %}Edycja użytkownika{% endblock %}
+{% block site_title %}Edycja użytkownika o ID: {{ id }} {% endblock %}
+{% block content %}
+{{ form_start(form) }}
+<p class="error">{{ error }}</p>
+<table>
+    <tr>
+        <td>{{ form_label(form.Nickname) }}</td>
+        <td>{{ form_widget(form.Nickname) }}</td>
+        <td>{{ form_errors(form.Nickname) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.Password.first) }}</td>
+        <td>{{ form_widget(form.Password.first) }}</td>
+        <td>{{ form_errors(form.Password.first) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.Password.second) }}</td>
+        <td>{{ form_widget(form.Password.second) }}</td>
+        <td>{{ form_errors(form.Password.second) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.Email.first) }}</td>
+        <td>{{ form_widget(form.Email.first) }}</td>
+        <td>{{ form_errors(form.Email.first) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.Email.second) }}</td>
+        <td>{{ form_widget(form.Email.second) }}</td>
+        <td>{{ form_errors(form.Email.second) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.Avatar) }}</td>
+        <td>{{ form_widget(form.Avatar) }}</td>
+        <td>{{ form_errors(form.Avatar) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.Remove) }}</td>
+        <td>{{ form_widget(form.Remove) }}</td>
+        <td>{{ form_errors(form.Remove) }}</td>
+    </tr>
+    {% if app.user.role == 'admin' and user.Role != 'admin'  %}
+    <tr>
+        <td>{{ form_label(form.Role) }}</td>
+        <td>{{ form_widget(form.Role) }}</td>
+        <td>{{ form_errors(form.Role) }}</td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td></td>
+        <td>{{ form_widget(form.submit) }}</td>
+    </tr>
+    
+</table>
+{{ form_end(form) }}
+{% endblock %}

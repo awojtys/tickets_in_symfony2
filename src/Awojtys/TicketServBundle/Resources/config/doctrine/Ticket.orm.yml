@@ -1,0 +1,45 @@
+Awojtys\TicketServBundle\Entity\Ticket:
+    type: entity
+    table: null
+    repositoryClass: Awojtys\TicketServBundle\Entity\TicketRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: '255'
+        content:
+            type: text
+        date:
+            type: date
+    lifecycleCallbacks: {  }
+    manyToOne:
+         status:
+             targetEntity: Status
+             inversedBy: tickets
+             joinColumn:
+                 name: status
+                 referencedColumnName: id
+         priority:
+             targetEntity: Priority
+             inversedBy: tickets
+             joinColumn:
+                 name: priority
+                 referencedColumnName: id
+         author:
+             targetEntity: User
+             inversedBy: tickets
+             joinColumn:
+                 name: author
+                 referencedColumnName: id
+         assignee:
+             targetEntity: User
+             inversedBy: tickets2
+             nullable: true
+             joinColumn:
+                 name: assignee
+                 referencedColumnName: id
+            

@@ -1,0 +1,10 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: symf_ticket
+    database_user: root
+    database_password: polcode
+    locale: pl
+    secret: ThisTokenIsNotSoSecretChangeIt

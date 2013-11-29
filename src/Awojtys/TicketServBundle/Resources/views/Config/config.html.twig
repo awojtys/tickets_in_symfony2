@@ -1,0 +1,20 @@
+{% extends "AwojtysTicketServBundle::base.html.twig" %}
+{% block title %}Konfiguracja{% endblock %}
+{% block site_title %}Konfiguracja{% endblock %}
+
+{% block content %}
+{{ form_start(form) }} 
+<table>
+{% for input in form %}
+        {% if input != loop.last %}
+        <tr>
+            <td>{{ form_label(input) }}</td>
+            <td>{{ form_widget(input) }}</td>
+            <td>{{ form_errors(input) }}</td>
+        </tr>
+        {% endif %}
+{% endfor %}
+</table>
+<input type="submit" name="submit" value="submit" />
+{{ form_end(form) }}
+{% endblock %}

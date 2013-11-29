@@ -1,0 +1,55 @@
+{% extends "AwojtysTicketServBundle::base.html.twig" %}
+{% block title %}Lista użytkowników{% endblock %}
+{% block site_title %}Lista uzytkowników{% endblock %}
+
+{% block content %}
+<img src="{{ avatar }}" />
+<table class="ticket_table">
+    <tr>
+    <td>Nazwa użytkownika: {{ user_data.nickname }}</td>
+    <td></td>
+    <td><a href="{{ path('user_edit', { 'id': user_data.id }) }}">Edytuj</a></td>
+    </tr>
+    <tr>
+        <td>E-mail: </td>
+        <td></td>
+        <td><a href="{{ path('user_delete', { 'id': user_data.id }) }}" onClick="return confirm('Jesteś pewien że chcesz skasować tego użytkownika?')">Usuń</a></td>
+    </tr>
+    <tr>
+        <td>Uprawnienia: </td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<h2>Tickety użytkownika</h2>
+{% for user_ticket in tickets_by_author %}
+<table class="ticket_table">
+    <tr>
+        <td>Tytuł: {{ user_ticket.title }} </td>
+        <td><a href="{{ path('show_ticket', { 'id': user_ticket.id }) }}">Pokaż</a></td>
+    </tr>
+
+    <tr>
+        <td>Treść: {{ user_ticket.content }}</td>
+        <td>Status: {{ user_ticket.status }}</td>
+    </tr>
+</table>
+{% endfor %}
+
+<h2>Tickety przypisane do użytkownika</h2>
+{% for for_user_ticket in tickets_by_assignee %}
+<table class="ticket_table">
+    <tr>
+        <td>Tytuł: {{ for_user_ticket.title }} </td>
+        <td><a href="{{ path('show_ticket', { 'id': for_user_ticket.id }) }}">Pokaż</a></td>
+    </tr>
+
+    <tr>
+        <td>Treść: {{ for_user_ticket.content }}</td>
+        <td>Status: {{ for_user_ticket.status }}</td>
+    </tr>
+</table>
+{% endfor %}
+
+{% endblock %}

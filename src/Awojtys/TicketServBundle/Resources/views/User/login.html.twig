@@ -1,0 +1,21 @@
+{% extends "AwojtysTicketServBundle::base.html.twig" %}
+{% block title %}Logowanie{% endblock %}
+{% block site_title %}Panel logowania {% endblock %}
+{% block content %}
+{{ form_start(form) }}
+<table>
+    <tr>
+        <td>{{ form_label( form._username) }}</td>
+        <td>{{ form_widget( form._username, {data : 'Default title'}) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label( form._password) }}</td>
+        <td>{{ form_widget( form._password) }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>{{ form_widget( form.Submit ) }}</td>
+    </tr>
+</table>
+{{ form_end(form) }}
+{% endblock %}

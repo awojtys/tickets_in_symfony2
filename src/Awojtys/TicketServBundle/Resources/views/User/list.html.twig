@@ -1,0 +1,22 @@
+{% extends "AwojtysTicketServBundle::base.html.twig" %}
+{% block title %}Lista użytkowników{% endblock %}
+{% block site_title %}Lista uzytkowników{% endblock %}
+
+{% block content %}
+<table class="ticket_table">
+    <tr>
+        <th>ID</th>
+        <th>Nazwa użytkownika</th>
+        <th>Email</th>
+        <th>Rola</th>
+    </tr>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td><a href="{{ path('user_profil', {'id':user.id }) }}">{{ user.nickname }}</a></td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
